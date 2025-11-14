@@ -15,7 +15,7 @@ public class InternshipFilter {
     private boolean sortAscending = true;
     
     public InternshipFilter() {
-        this.preferredMajors = new ArrayList<>();
+        
     }
     
     // ===== Getters and Setters =====
@@ -94,7 +94,6 @@ public class InternshipFilter {
     public String toString() {
         return "InternshipFilter{" +
                 "status='" + status + '\'' +
-                ", preferredMajors=" + preferredMajors +
                 ", level='" + level + '\'' +
                 ", closingDateBefore=" + closingDateBefore +
                 ", closingDateAfter=" + closingDateAfter +
