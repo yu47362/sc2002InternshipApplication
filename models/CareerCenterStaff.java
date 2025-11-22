@@ -7,7 +7,11 @@ import services.InternshipViewerService;
 import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
-
+/**
+ * This is Career Centre Staff which handles approval
+ * @author Dai Jiayu
+ * @version 1.0
+ */
 public class CareerCenterStaff extends User implements ApprovalProcessor, InternshipViewer {
     private String department;
     private final ApprovalService approvalService;
@@ -389,5 +393,4 @@ public class CareerCenterStaff extends User implements ApprovalProcessor, Intern
         System.out.println("Staff ID: " + getUserID());
         System.out.println("Department: " + department);
     }
-
 }
