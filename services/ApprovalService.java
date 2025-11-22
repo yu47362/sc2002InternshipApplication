@@ -3,7 +3,11 @@ package services;
 import models.CompanyRepresentative;
 import models.InternshipOpportunity;
 import models.InternshipApplication;
-
+/**
+ * This is for approving of internship application service
+ * @author Dai Jiayu
+ * @version 1.0
+ */
 public class ApprovalService {
     
     public void approveCompanyRepresentative(CompanyRepresentative rep) {
@@ -50,4 +54,5 @@ public class ApprovalService {
         System.out.println("Internship '" + opp.getTitle() + "' visibility set to: " + 
                           (opp.isVisible() ? "Visible" : "Hidden"));
     }
+
 }
