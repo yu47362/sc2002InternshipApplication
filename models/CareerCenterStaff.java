@@ -389,4 +389,5 @@ public class CareerCenterStaff extends User implements ApprovalProcessor, Intern
         System.out.println("Staff ID: " + getUserID());
         System.out.println("Department: " + department);
     }
+
 }
