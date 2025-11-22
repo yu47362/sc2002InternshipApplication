@@ -23,7 +23,8 @@ public class InternshipFilterServiceImpl implements InternshipFilterService {
             if (filterByStatus(opp, filter) && 
                 filterByLevel(opp, filter) &&
                 filterByClosingDate(opp, filter) &&
-                filterByCompany(opp, filter)) {
+                filterByCompany(opp, filter)&&
+                filterByPreferredMajor(opp,filter)) {
                 filtered.add(opp);
             }
         }
@@ -33,7 +34,10 @@ public class InternshipFilterServiceImpl implements InternshipFilterService {
                 return a.getTitle().compareTo(b.getTitle());
             } else if ("company".equals(filter.getSortBy())) {
                 return a.getCompany().compareTo(b.getCompany());
+            } else if ("preferredmajor".equals(filter.getSortBy())){
+                return a.getPreferredMajor().compareTo(b.getPreferredMajor());
             }
+        
             return 0;
         });
     
@@ -64,6 +68,11 @@ public class InternshipFilterServiceImpl implements InternshipFilterService {
         return filter.getCompany() == null || 
                filter.getCompany().equalsIgnoreCase(opp.getCompany());
     }
+
+    private boolean filterByPreferredMajor(InternshipOpportunity opp, InternshipFilter filter){
+        return filter.getPreferredMajor()== null ||
+               filter.getPreferredMajor().equalsIgnoreCase(opp.getPreferredMajor());
+    }
     
     private Comparator<InternshipOpportunity> getComparator(InternshipFilter filter) {
         Comparator<InternshipOpportunity> comparator;
@@ -80,6 +89,9 @@ public class InternshipFilterServiceImpl implements InternshipFilterService {
                 break;
             case "status":
                 comparator = Comparator.comparing(InternshipOpportunity::getStatus);
+                break;
+            case "preferredmajor":
+                comparator = Comparator.comparing(InternshipOpportunity::getPreferredMajor);
                 break;
             case "title":
             default:
@@ -169,6 +181,29 @@ public class InternshipFilterServiceImpl implements InternshipFilterService {
         }
     
         result.sort(String::compareTo);
+        return result;
+    }
+
+    @Override
+    public List<String> getAvailablePreferredMajors(List<InternshipOpportunity> internships) {
+        List<String> result = new ArrayList<>();
+
+        if (internships == null) return result;
+
+        for (InternshipOpportunity opp : internships) {
+            String major = opp.getPreferredMajor();
+            
+            if (major == null || major.trim().isEmpty()) continue;
+            
+            if (!result.contains(major)) {
+                result.add(major);
+            }
+        }
+
+        if (!result.isEmpty()) {
+            result.sort(String::compareTo);
+        }
+
         return result;
     }
 }
