@@ -7,7 +7,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
+/**
+ * This is to check if the internship posted matches required student attribute
+ * @author Dai Jiayu
+ * @version 1.0
+ */
 public class InternshipService {
     
     public List<InternshipOpportunity> getAvailableInternshipsForStudent(Student student, List<CompanyRepresentative> reps) {
@@ -100,4 +104,5 @@ public class InternshipService {
         }
         return null;
     }
+
 }
