@@ -31,10 +31,11 @@ public class FilterManagementService implements FilterManager {
             System.out.println("2. Filter by Level");
             System.out.println("3. Filter by Closing Date Range");
             System.out.println("4. Filter by Company");
-            System.out.println("5. Change Sorting");
-            System.out.println("6. Apply Filters and View Results");
-            System.out.println("7. Clear All Filters");
-            System.out.println("8. Back to Main Menu");
+            System.out.println("5. Filter by Preferred Major");
+            System.out.println("6. Change Sorting");
+            System.out.println("7. Apply Filters and View Results");
+            System.out.println("8. Clear All Filters");
+            System.out.println("9. Back to Main Menu");
             System.out.print("Choose an option: ");
             
             String choice = sc.nextLine().trim();
@@ -44,16 +45,17 @@ public class FilterManagementService implements FilterManager {
                 case "2" -> setLevelFilter(currentFilter, filterService.getAvailableLevels(allInternships));
                 case "3" -> setDateFilter(currentFilter);
                 case "4" -> setCompanyFilter(currentFilter, filterService.getAvailableCompanies(allInternships));
-                case "5" -> setSorting(currentFilter);
-                case "6" -> { 
+                case "5" -> setPreferredMajorFilter(currentFilter, filterService.getAvailablePreferredMajors(allInternships));
+                case "6" -> setSorting(currentFilter);
+                case "7" -> { 
                     System.out.println("Filters applied successfully!");
                     return; 
                 }
-                case "7" -> {
+                case "8" -> {
                     currentFilter.clearFilters();
                     System.out.println("All filters cleared.");
                 }
-                case "8" -> { return; }
+                case "9" -> { return; }
                 default -> System.out.println("Invalid option. Please try again.");
             }
         }
@@ -170,6 +172,32 @@ public class FilterManagementService implements FilterManager {
             System.out.println("Please enter a valid number.");
         }
     }
+
+    private void setPreferredMajorFilter(InternshipFilter filter, List<String> availableMajors) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("\n=== Filter by Preferred Major ===");
+        System.out.println("Available Preferred Majors:");
+        System.out.println("0. Clear preferred major filter");
+        for (int i = 0; i < availableMajors.size(); i++) {
+            System.out.println((i + 1) + ". " + availableMajors.get(i));
+        }
+        System.out.print("Select preferred major (0 to clear): ");
+        
+        try {
+            int choice = Integer.parseInt(sc.nextLine().trim());
+            if (choice == 0) {
+                filter.setPreferredMajor(null);
+                System.out.println("Preferred major filter cleared.");
+            } else if (choice > 0 && choice <= availableMajors.size()) {
+                filter.setPreferredMajor(availableMajors.get(choice - 1));
+                System.out.println("Preferred major filter set to: " + availableMajors.get(choice - 1));
+            } else {
+                System.out.println("Invalid selection.");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Please enter a valid number.");
+        }
+    }
     
     private void setSorting(InternshipFilter filter) {
         Scanner sc = new Scanner(System.in);
@@ -179,6 +207,7 @@ public class FilterManagementService implements FilterManager {
         System.out.println("3. Closing Date");
         System.out.println("4. Level");
         System.out.println("5. Status");
+        System.out.println("6. Preferred Major");
         System.out.print("Choose field to sort by: ");
         String fieldChoice = sc.nextLine().trim();
         
@@ -188,6 +217,7 @@ public class FilterManagementService implements FilterManager {
             case "3": sortField = "closingdate"; break;
             case "4": sortField = "level"; break;
             case "5": sortField = "status"; break;
+            case "6": sortField = "preferredmajor"; break;
         }
         filter.setSortBy(sortField);
         
