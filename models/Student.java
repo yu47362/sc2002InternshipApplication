@@ -55,7 +55,6 @@ public class Student extends User implements StudentActions, InternshipViewer {
     }
 /**
  * for accepting offer from a company
- * @parameter InternshipApplication app
  */
     @Override
     public void acceptInternship(InternshipApplication app) {
@@ -133,4 +132,5 @@ public class Student extends User implements StudentActions, InternshipViewer {
     }
 
 }
+
 
