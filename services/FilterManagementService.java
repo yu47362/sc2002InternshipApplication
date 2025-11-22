@@ -10,7 +10,11 @@ import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
+/**
+ * This is to manager filter service with different categories
+ * @author Dai Jiayu
+ * @version 1.0
+ */
 public class FilterManagementService implements FilterManager {
     private final Student student;
     
@@ -229,3 +233,4 @@ public class FilterManagementService implements FilterManager {
                           (filter.isSortAscending() ? "Ascending" : "Descending") + ")");
     }
 }
+
