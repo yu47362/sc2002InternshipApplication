@@ -53,7 +53,10 @@ public class Student extends User implements StudentActions, InternshipViewer {
     public void applyForInternship(InternshipOpportunity opp) {
         applicationService.applyForInternship(opp);
     }
-
+/**
+ * for accepting offer from a company
+ * @parameter InternshipApplication app
+ */
     @Override
     public void acceptInternship(InternshipApplication app) {
         if (app == null) {
@@ -130,3 +133,4 @@ public class Student extends User implements StudentActions, InternshipViewer {
     }
 
 }
+
