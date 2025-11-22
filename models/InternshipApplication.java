@@ -1,5 +1,9 @@
 package models;
-
+/**
+ * This is InternshipApplication that have important methods related to application such as apply
+ * @author Dai Jiayu
+ * @version 1.0
+ */
 public class InternshipApplication {
     private Student student;
     private InternshipOpportunity internship;
@@ -54,3 +58,4 @@ public class InternshipApplication {
                 && !status.equalsIgnoreCase("Rejected");
     }
 }
+
