@@ -7,7 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-
+/**
+ * This is CompanyRepresentative class that creates internship and see student application
+ * @author Dai Jiayu
+ * @version 1.0
+ */
 public class CompanyRepresentative extends User implements InternshipViewer {
     private String company;
     private String department;
@@ -422,4 +426,5 @@ public class CompanyRepresentative extends User implements InternshipViewer {
         }
         return null;
     }
+
 }
