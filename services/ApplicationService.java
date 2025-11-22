@@ -4,7 +4,11 @@ import models.Student;
 import models.InternshipOpportunity;
 import models.InternshipApplication;
 import java.util.ArrayList;
-
+/**
+ * This is Application service that handles information of matched internship application related functions
+ * @author Dai Jiayu
+ * @version 1.0
+ */
 public class ApplicationService {
     private final Student student;
     
@@ -77,4 +81,5 @@ public class ApplicationService {
         app.setStatus("Withdrawal Requested");
         System.out.println("Withdrawal request submitted for: " + app.getInternship().getTitle());
     }
+
 }
