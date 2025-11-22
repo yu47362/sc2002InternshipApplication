@@ -11,6 +11,7 @@ public class InternshipFilter {
     private LocalDate closingDateBefore;
     private LocalDate closingDateAfter;
     private String company;
+    private String preferredMajor;
     private String sortBy = "title"; 
     private boolean sortAscending = true;
     
@@ -33,6 +34,9 @@ public class InternshipFilter {
     
     public String getCompany() { return company; }
     public void setCompany(String company) { this.company = company; }
+
+    public String getPreferredMajor(){return preferredMajor;}
+    public void setPreferredMajor(String preferredMajor){this.preferredMajor = preferredMajor;}
     
     public String getSortBy() { return sortBy; }
     public void setSortBy(String sortBy) { this.sortBy = sortBy; }
@@ -46,7 +50,8 @@ public class InternshipFilter {
                level != null ||
                closingDateBefore != null ||
                closingDateAfter != null ||
-               company != null;
+               company != null||
+               preferredMajor !=null;
     }
     
 
@@ -56,6 +61,7 @@ public class InternshipFilter {
         closingDateBefore = null;
         closingDateAfter = null;
         company = null;
+        preferredMajor = null;
         sortBy = "title";
         sortAscending = true;
     }
@@ -68,6 +74,7 @@ public class InternshipFilter {
         copy.setClosingDateBefore(this.closingDateBefore);
         copy.setClosingDateAfter(this.closingDateAfter);
         copy.setCompany(this.company);
+        copy.setPreferredMajor(this.preferredMajor);
         copy.setSortBy(this.sortBy);
         copy.setSortAscending(this.sortAscending);
         return copy;
@@ -86,20 +93,21 @@ public class InternshipFilter {
             activeFilters.add("Closing Date: " + dateRange);
         }
         if (company != null) activeFilters.add("Company: " + company);
-        
+        if(preferredMajor!=null) activeFilters.add("Preferred Major: "+ preferredMajor);
         return activeFilters.isEmpty() ? "No active filters" : String.join(" | ", activeFilters);
     }
     
     @Override
     public String toString() {
         return "InternshipFilter{" +
-                "status='" + status + '\'' +
-                ", level='" + level + '\'' +
-                ", closingDateBefore=" + closingDateBefore +
-                ", closingDateAfter=" + closingDateAfter +
-                ", company='" + company + '\'' +
-                ", sortBy='" + sortBy + '\'' +
-                ", sortAscending=" + sortAscending +
-                '}';
+            "status=" + status + 
+            ", level=" + level + 
+            ", closingDateBefore=" + closingDateBefore + 
+            ", closingDateAfter=" + closingDateAfter + 
+            ", company=" + company + 
+            ", preferredMajor=" + preferredMajor + 
+            ", sortBy=" + sortBy + 
+            ", sortAscending=" + sortAscending + 
+            '}';
     }
 }
