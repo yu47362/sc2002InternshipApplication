@@ -65,7 +65,10 @@ public class CareerCenterStaff extends User implements ApprovalProcessor, Intern
             }
         }
     }
-
+/**
+ * for approving of company internship
+ *@parameter List<CompanyRepresentative> reps
+ */
     @Override
     public void approveInternships(List<CompanyRepresentative> reps) {
         Scanner sc = new Scanner(System.in);
@@ -84,7 +87,10 @@ public class CareerCenterStaff extends User implements ApprovalProcessor, Intern
             }
         }
     }
-
+/**
+ * for approving of student withdrawal request
+ * @parameter List<Student> students
+ */
     @Override
     public void processWithdrawals(List<Student> students) {
         Scanner sc = new Scanner(System.in);
@@ -394,3 +400,4 @@ public class CareerCenterStaff extends User implements ApprovalProcessor, Intern
         System.out.println("Department: " + department);
     }
 }
+
