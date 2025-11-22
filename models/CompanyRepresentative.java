@@ -212,7 +212,9 @@ public class CompanyRepresentative extends User implements InternshipViewer {
         // Apply the changes
         opp.editDetails(newTitle, newDesc, newLevel, newMajor, newOpen, newClose, newSlots);
     }
-        
+/**
+ * for deleting internship before staff approval
+ */
     // Delete internship (only if it belongs to this company)
     public void deleteInternship() {
         Scanner sc = new Scanner(System.in);
@@ -267,7 +269,9 @@ public class CompanyRepresentative extends User implements InternshipViewer {
             System.out.println("Deletion cancelled.");
         }
     }
-
+/**
+ * for toggle the visibility of internship on or off
+ */
     // Toggle visibility of approved internships
     public void toggleVisibility() {
         Scanner sc = new Scanner(System.in);
@@ -428,3 +432,4 @@ public class CompanyRepresentative extends User implements InternshipViewer {
     }
 
 }
+
