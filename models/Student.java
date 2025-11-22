@@ -8,7 +8,11 @@ import services.InternshipViewerService;
 import services.FilterManagementService;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * This is student class which will apply for internship
+ * @author Dai Jiayu
+ * @version 1.0
+ */
 public class Student extends User implements StudentActions, InternshipViewer {
     private int year;
     private String major;
@@ -124,4 +128,5 @@ public class Student extends User implements StudentActions, InternshipViewer {
         if (acceptedInternship == app) acceptedInternship = null;
         System.out.println("Application removed for internship: " + app.getInternship().getTitle());
     }
+
 }
