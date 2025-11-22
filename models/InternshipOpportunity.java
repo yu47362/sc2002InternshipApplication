@@ -3,7 +3,11 @@ package models;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * This is Internship opportunity with its attributes
+ * @author Dai Jiayu
+ * @version 1.0
+ */
 public class InternshipOpportunity {
     private String title;
     private String description;
@@ -118,3 +122,4 @@ public class InternshipOpportunity {
         System.out.println("Applications: " + applications.size());
     }
 }
+
