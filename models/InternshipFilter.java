@@ -4,7 +4,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * This is the filter function to filter by certain criteria
+ * @author Dai Jiayu
+ * @version 1.0
+ */
 public class InternshipFilter {
     private String status;
     private String level;
@@ -111,3 +115,4 @@ public class InternshipFilter {
             '}';
     }
 }
+
