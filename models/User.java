@@ -1,5 +1,9 @@
 package models;
-
+/**
+ * This is user class which is parent class to other type of users and provide basic functions such as login
+ * @author Dai Jiayu
+ * @version 1.0
+ */
 public abstract class User {
     protected String userID;
     protected String name;
@@ -27,4 +31,5 @@ public abstract class User {
     public String getUserID() { return userID; }
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
+
 }
