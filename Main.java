@@ -397,7 +397,10 @@ public class Main {
             System.out.println("Incorrect password.");
             return;
         }
-
+        UserSession session = SessionManager.getSession(staff.getUserID());
+        if(session == null){
+            session = SessionManager.createSession(staff);
+        }
         System.out.println("Welcome " + staff.getName() + "!");
 
         while (true) {
@@ -407,8 +410,11 @@ public class Main {
             System.out.println("3. View Approved Internships");
             System.out.println("4. Approve Student Withdrawals");
             System.out.println("5. View All Internships");
-            System.out.println("6. Change Password");
-            System.out.println("7. Logout");
+            System.out.println("6. Filter Internships");
+            System.out.println("7. View Company Rep Statistics");
+            System.out.println("8. View Internship Statistics");
+            System.out.println("9. Change password");
+            System.out.println("10. Logout");
             System.out.print("Choose an option: ");
 
             String choice = consoleUI.getInput("");
@@ -427,12 +433,22 @@ public class Main {
                     staff.processWithdrawals(students);
                     break;
                 case "5":
-                    staffViewInternships(staff);
+                    staffViewInternships(staff,session);
                     break;
                 case "6":
-                    changePassword(staff);
+                    staffFilterInternships(staff,session);
                     break;
                 case "7":
+                    staff.viewCompanyRepStats(companyReps);
+                    break;
+                case "8":
+                    staff.viewInternshipStats(companyReps);
+                    break;
+                case "9":
+                    changePassword(staff);
+                    break;
+                case "10":
+                    SessionManager.removeSession(staff.getUserID());
                     System.out.println("Logged out successfully.");
                     return;
                 default:
@@ -443,7 +459,22 @@ public class Main {
         }
     }
 
-    private static void staffViewInternships(CareerCenterStaff staff) {
+    private static void staffFilterInternships(CareerCenterStaff staff, UserSession session) {
+        List<InternshipOpportunity> allInternships = internshipService.getAllInternships(companyReps);
+    
+        if (allInternships.isEmpty()) {
+            System.out.println("No internships available in the system.");
+            return;
+        }
+    
+        FilterManager staffFilterManager = new FilterManagementService(null);
+    
+        staffFilterManager.filterInternships(allInternships, filterService, session.getCurrentFilter());
+    
+        System.out.println("\n=== Filtered Internships (Staff View) ===");
+        staff.viewInternshipsWithFilter(allInternships, session.getCurrentFilter());
+    }
+    private static void staffViewInternships(CareerCenterStaff staff,UserSession session) {
         List<InternshipOpportunity> allInternships = internshipService.getAllInternships(companyReps);
         InternshipFilter filter = new InternshipFilter();
         
