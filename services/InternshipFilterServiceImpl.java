@@ -9,7 +9,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.ArrayList;
 import java.util.Collections;
-
+/**
+ * This is to filter out the targeted matching internship
+ * @author Dai Jiayu
+ * @version 1.0
+ */
 public class InternshipFilterServiceImpl implements InternshipFilterService {
     
     @Override
@@ -207,3 +211,4 @@ public class InternshipFilterServiceImpl implements InternshipFilterService {
         return result;
     }
 }
+
