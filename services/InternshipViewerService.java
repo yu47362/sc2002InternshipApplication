@@ -6,7 +6,11 @@ import models.InternshipFilter;
 import models.Student;
 import models.InternshipApplication;
 import java.util.List;
-
+/**
+ * This is to display internship information
+ * @author Dai Jiayu
+ * @version 1.0
+ */
 public class InternshipViewerService {
     private final InternshipFilterService filterService;
     
@@ -100,4 +104,5 @@ public class InternshipViewerService {
                     " | Withdrawal Requested: " + app.isWithdrawRequested());
         }
     }
+
 }
